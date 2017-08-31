@@ -98,7 +98,7 @@ do
 				# assume delete as different to last run and temporary file exists
 				printf "%s\n" "${c_info}[$(date +%x) - $(date +%X)]${c_reset} Removed ${c_model}${checkmodel}${c_reset} from models to record"
 				pid1=$(ps -U ${run_user} ux | grep -i ${site_chk}-record | grep -i ${checkmodel} | awk '{print $2}')
-				pid2=$(ps -U ${run_user} ux | grep -i ${get_cmd} | grep -i ${checkmodel} | awk '{print $2}')
+				pid2=$(ps -U ${run_user} ux | grep -i ${record_cmd} | grep -i ${checkmodel} | awk '{print $2}')
 				{ kill ${pid1} ${pid2} && wait ${pid1} ${pid2}; } 2>/dev/null
 				rm "${temp_dir}/${checkmodel}.txt" 2>/dev/null
 			else
