@@ -12,7 +12,7 @@ livejasmin-bash lets you archive your favourite models public shows on livejasmi
 1. Download and unpack the [code](https://github.com/dirk362/livejasmin-bash/archive/master.zip)
 2. Open console and go into the directory where you unpacked the files.
 3. Enable scripts to run using `chmod +x *.sh`
-4. Edit `livejasmin.ini` file and set desired values for `recording_dir`, `recording_cmd`, and `get_cmd`.
+4. Edit `livejasmin.ini` file and set desired values for `recording_dir` and `get_cmd`.
 5. Edit `livejasmin-models.txt` and add in the exact name of the model as defined on the main livejasmin site. Several entries are present in the source file, by way of example only.
 
 There are additional options in the `livejasmin.ini` that define other settings such as filename date formats, etc. Naming should make it clear what these relate to.
