@@ -63,7 +63,7 @@ run_user=$(whoami)
 model_online=0
 
 # validate elements
-for check_file in "${get_cmd}"
+for check_file in "${record_cmd}" "${get_cmd}"
 do
 	if [[ ! -f ${check_file} ]] ; then
 		printf "%s\n" "${c_error}DEBUG: Failed to locate required file - missing ${check_file##*/} - exiting...${c_reset}"
@@ -71,6 +71,8 @@ do
 	fi
 done
 
+curl_base="--silent --connect-timeout 5 --retry 2 --insecure --fail --noproxy '*' --user-agent '${user_agent}'"
+curl_options=""
 wget_base="--no-check-certificate --timeout=5 --tries=2 --no-proxy --no-verbose --quiet --user-agent=\"${user_agent}\""
 wget_options=""
 
@@ -101,7 +103,7 @@ do
 		if [[ ! -d "${output_dir%/#}" ]] ; then mkdir -p "${output_dir%/#}" ; fi
 		opt_fn="${long_site_name}-${channel}-$(date ${date_format}).${fs_type}"
 		filesave="${output_dir}/${opt_fn}"
-		${get_cmd} "${streampath}" ${wget_base} ${wget_options} --output-document="${filesave}" &>/dev/null &
+		${record_cmd} "${streampath}" ${curl_base} ${curl_options} --output "${filesave}" &>/dev/null &
 		runpid=$!
 		chkloop=0
 		sleep 10s 2>/dev/null
