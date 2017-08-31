@@ -2,7 +2,7 @@
 livejasmin-bash lets you archive your favourite models public shows on livejasmin.com
 
 # Requirements
- - wget to extract parameters from site. and to save/capture the video streams.
+ - wget to extract parameters from site, and to save/capture the video streams.
  - several standard bash functions and/or Linux commands (e.g. find, cat, grep, etc.)
 
 # Want to support?
