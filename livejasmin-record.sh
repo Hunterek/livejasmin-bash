@@ -84,7 +84,7 @@ do
 		do
 			chk_tmp=$(mktemp)
 			chk_url="${model_url}${channel}?_dc=$(date +%s%3N)"
-			${get_cmd} ${wget_base} ${wget_options} --referer ${site_url} "${chk_url}" --output-document="${chk_tmp}" 2>/dev/null
+			${get_cmd} ${wget_base} ${wget_options} --referer ${site_url} \"${chk_url}\" --output-document="${chk_tmp}" 2>/dev/null
 			if [[ -s "${chk_tmp}" ]] ; then
 				proxy_address=$(cat "${chk_tmp}" | grep -o -P "(?<=proxy_ip\"\:\"https\:\\\/\\\/).*?(?=\")")
 				if [[ ! "${proxy_address}" == "" ]] ; then
