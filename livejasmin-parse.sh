@@ -55,7 +55,7 @@ output_dir="${recording_dir}/${site_name}"
 site_chk="[${site_name:0:1}]${site_name:1}"
 
 # validate elements
-for check_file in "${models}" "${script_exec}"
+for check_file in "${base_dir}/${models}" "${script_exec}"
 do
 	if [[ ! -f ${check_file} ]] ; then
 		printf "%s\n" "${c_error}DEBUG: Failed to locate required file - missing ${check_file##*/} - exiting...${c_reset}"
@@ -75,7 +75,7 @@ fi
 while [ 1 ]
 do
 	if [[ ! -d "${temp_dir%/#}" ]] ; then mkdir -p "${temp_dir%/#}" ; fi
-	readarray -t this_run_array < "${models}"
+	readarray -t this_run_array < "${base_dir}/${models}"
 	if [[ -z "${this_run_array}" ]] ; then
 		printf "%s\n" "${c_error}DEBUG: Models file is empty - exiting...${c_reset}"
 		exit 1
